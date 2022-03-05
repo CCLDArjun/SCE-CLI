@@ -10,16 +10,6 @@ sub_parser = parser.add_subparsers(required=True, dest='command')
 
 setup_parser = sub_parser.add_parser('setup', help='Setup the sce tool')
 
-link_parser = sub_parser.add_parser('link', help='Link an existing clone')
-link_parser.add_argument(
-    'path', type=str,
-    help='path of the clone'
-)
-link_parser.add_argument(
-    'project-name', choices=['Core-v4', 'SCE-discord-bot'],
-    help='name of the project'
-)
-
 run_parser = sub_parser.add_parser('run', help='Run an sce service')
 run_parser.add_argument(
     '--service', '-s', nargs='*',
@@ -35,6 +25,8 @@ presubmit_parser.add_argument(
     '--project', '-p', nargs='+',
     help='Project to run presubmit checks for.'
 )
+
+test_parser = sub_parser.add_parser('test')
 
 args = parser.parse_args()
 
